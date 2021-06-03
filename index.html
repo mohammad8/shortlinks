@@ -6,10 +6,21 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha256-L/W5Wfqfa0sdBNIKN9cG6QA5F2qx4qICmU2VgLruv9Y=" crossorigin="anonymous">
   <title>کوتاه کننده لینک</title>
   <style>
+   @font-face {
+  font-family: Vazir;
+  src: url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.eot');
+  src: url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.eot?#iefix') format('embedded-opentype'),
+       url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.woff2') format('woff2'),
+       url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.woff') format('woff'),
+       url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.ttf') format('truetype');
+  font-weight: normal;
+}
     * {
       margin: 0;
       padding: 0;
       cursor: default;
+      direction: rtl;
+      font-family: Vazir;
     }
     html, body {
       height: 100%;
@@ -27,13 +38,15 @@
       align-content: center;
 
       color: #2a2b2c;
-      background-color: #ebedee;
+      background-color: #ffffff;
       overflow: hidden;
     }
+
     .card {
-      background-color: transparent;
-      width: 768px;
-	  text-align: right;
+      background-color: rgb(247, 247, 247);
+      width: 300px; height: 250px;
+	    text-align: center;
+      box-shadow: 0px 0px 6px rgb(0 0 0 / 16%);
     }
     .card-text {
       text-align: center;
@@ -45,13 +58,27 @@
     .card-text > a {
       cursor: pointer;
     }
+    .card-title{
+    font-size: 15px;
+    margin-bottom: 30px;
+    }
     .form-control {
         cursor: auto;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 0px 0px 6px rgb(0 0 0 / 16%);
     }
-    @media (max-width: 769px) {
-      .card {
-        width: 80%;
-      }
+    .btn-short{
+      margin-top: 20px;
+      display: block;
+      width: 100%;
+      background-color: #ff1100;
+      color: #fff;
+      box-shadow: 3px 3px 6px rgb(0 0 0 / 16%);
+    }
+    .btn-short:hover{
+      background-color: #b6261c;
+      color: #ffffff;
     }
     @media (max-width: 420px) {
       .card {
@@ -60,11 +87,11 @@
     }
     @media (prefers-color-scheme: dark) { 
       body {
-        color: #d9d9d9; 
+        color: #858282; 
         background: #1b1b1b;
       }
       .card {
-        background-color: #252d38;
+        background-color: #8093ad;
       }
     } 
   </style>
@@ -74,10 +101,10 @@
     <h5 class="card-header">کوتاه کننده لینک</h5>
     <div class="card-body">
       <h5 class="card-title">لینکی که میخواه کوتاه شود رو وارد کنید</h5>
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="برای مثال: https://example.com/" id="text">
-        <div class="input-group-append">
-          <button class="btn btn-primary" type="button" onclick='shorturl()' id="searchbtn">کوتاه کن</button>
+      <div>
+        <input type="text" class="form-control" placeholder="برای مثال: https://example.com" id="text">
+        <div>
+          <button class="btn btn-short" type="button" onclick='shorturl()' id="searchbtn">کوتاه کن</button>
         </div>
       </div>    
       <div class="card-text">
@@ -96,7 +123,7 @@
         </div>
         <div class="modal-body" id="result">هیچ نتیجه ای وجود ندارد</div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" onclick='copyurl("result")' data-toggle="popover" data-placement="bottom" data-content="Copied!">کپی</button>
+          <button type="button" class="btn btn-primary" onclick='copyurl("result")' data-toggle="popover" data-content="!کپی شد" data-placement="bottom" >کپی</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>    
         </div>
       </div>
